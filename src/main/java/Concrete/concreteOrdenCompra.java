@@ -1,6 +1,6 @@
+package Concrete;
 
-package Controllers;
-
+import Interfaces.IOrdenCompra;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,13 +10,15 @@ import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class OrdenController {
+public class concreteOrdenCompra implements IOrdenCompra {
+
     // Parámetros de la base de datos
-        String url = "jdbc:mysql://localhost:3306/ordenesumg";
-        String usuario = "Clairo";
-        String clave = "ClaireCottrill07$";
+    String url = "jdbc:mysql://localhost:3306/ordenesumg";
+    String usuario = "Clairo";
+    String clave = "ClaireCottrill07$";
         
-    public String listaOrden(JTable tabla){
+    @Override
+    public String Lista(JTable tabla) {
         String mensaje = "";
         String cadena = "select a.idOrden, a.proveedor, a.direccion, a.telefono, a.fechaOrden, a.fechaEntrega, b.Nombre from orden_compra a\n" +
                         "inner join estado_orden_compra b on a.idEstadoOrden=b.idEstado\n" +
@@ -47,18 +49,23 @@ public class OrdenController {
         return mensaje;
     }
     
-    public String registrarOrden(String cliente,String apellido,String telefon ){
-        String mensaje = "";
+    @Override
+    public String Registrar(String p,String d,String t,String fo,String fe,int idE) {
+                String mensaje = "";
         // Consulta SQL de inserción
-        String cadena = "INSERT INTO orden_compra (cliente, idProducto, fecha) VALUES (?, ?, ?)";
+        String cadena = "INSERT INTO orden_compra (Proveedor,Direccion,Telefono,FechaOrden,FechaEntrega,idEstadoOrden)" +
+                        "VALUES (?,?,?,?,?,?)";
 
         try (Connection conn = DriverManager.getConnection(url, usuario, clave);
              PreparedStatement pstmt = conn.prepareStatement(cadena)) {
 
             // Establecer los valores de los parámetros
-            pstmt.setString(1, cliente);  
-            pstmt.setString(2, apellido); 
-            pstmt.setString(3, telefon);     
+            pstmt.setString(1, p);  
+            pstmt.setString(2, d); 
+            pstmt.setString(3, t); 
+            pstmt.setString(4, fo);
+            pstmt.setString(5, fe);
+            pstmt.setInt(6, idE);
 
             // Ejecutar el insert
             int rowsAffected = pstmt.executeUpdate();
@@ -75,5 +82,4 @@ public class OrdenController {
         return mensaje;
     }
     
-
 }

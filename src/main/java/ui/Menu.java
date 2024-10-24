@@ -26,6 +26,7 @@ public class Menu extends javax.swing.JFrame {
         btnOrdenVenta = new javax.swing.JMenuItem();
         produccion = new javax.swing.JMenu();
         btnProduccion = new javax.swing.JMenuItem();
+        btnProducto = new javax.swing.JMenuItem();
         importacion = new javax.swing.JMenu();
         btnImportacion = new javax.swing.JMenuItem();
         facturacion = new javax.swing.JMenu();
@@ -33,6 +34,8 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto UMG");
+
+        contenedor.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
         contenedor.setLayout(contenedorLayout);
@@ -84,6 +87,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         produccion.add(btnProduccion);
+
+        btnProducto.setText("Producto");
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
+        produccion.add(btnProducto);
 
         jMenuBar1.add(produccion);
 
@@ -142,16 +153,6 @@ public class Menu extends javax.swing.JFrame {
        f.show();
     }//GEN-LAST:event_btnOrdenCompraActionPerformed
 
-    private void produccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produccionActionPerformed
-
-    }//GEN-LAST:event_produccionActionPerformed
-
-    private void btnProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProduccionActionPerformed
-        frmProduccion f = new frmProduccion();
-        contenedor.add(f);
-        f.show();
-    }//GEN-LAST:event_btnProduccionActionPerformed
-
     private void btnImportacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportacionActionPerformed
         frmImportacion f = new frmImportacion();
         contenedor.add(f);
@@ -169,6 +170,23 @@ public class Menu extends javax.swing.JFrame {
         contenedor.add(f);
         f.show();
     }//GEN-LAST:event_btnOrdenVentaActionPerformed
+
+    private void produccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produccionActionPerformed
+
+    }//GEN-LAST:event_produccionActionPerformed
+
+    private void btnProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProduccionActionPerformed
+        frmProduccion f = new frmProduccion();
+        contenedor.add(f);
+        f.show();
+    }//GEN-LAST:event_btnProduccionActionPerformed
+
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        // TODO add your handling code here:
+        frmProducto f = new frmProducto();
+        contenedor.add(f);
+        f.show();
+    }//GEN-LAST:event_btnProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +230,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnOrdenCompra;
     private javax.swing.JMenuItem btnOrdenVenta;
     private javax.swing.JMenuItem btnProduccion;
+    private javax.swing.JMenuItem btnProducto;
     private javax.swing.JPanel contenedor;
     private javax.swing.JMenu facturacion;
     private javax.swing.JMenu importacion;
